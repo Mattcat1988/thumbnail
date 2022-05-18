@@ -1,6 +1,7 @@
 #!/bin/bash
 function myconvert {
-    if [[ $file != *"_thumbnail"* ]]
+    JPG_REGEX=".*\.jpg$"
+    if [[ $file != *"_thumbnail"* ]] && [[ $file =~ $JPG_REGEX ]]
     then
       name=${file//.jpg/}
       convert "$file" -thumbnail 320 "${name}_thumbnail.jpg"
